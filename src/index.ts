@@ -1,10 +1,14 @@
-import express from "express";
+import express, { Application } from "express";
 import dotenv from "dotenv";
+import morgan from "morgan";
 
 dotenv.config();
 
-const app = express();
+const app: Application = express();
 const port = process.env.PORT || 4000;
+
+app.use(express.json());
+app.use(morgan("tiny"));
 
 app.get("/", (req, res) => {
   res.send("Hello, express!");
