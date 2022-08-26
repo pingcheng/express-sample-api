@@ -1,0 +1,11 @@
+# ide files
+.idea
+
+# node files
+node_modules
+
+# env files
+.env
+
+# build files
+dist
