@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import router from "./routes";
 
 dotenv.config();
 
@@ -13,6 +14,8 @@ app.use(morgan("tiny"));
 app.get("/", (req, res) => {
   res.send("Hello, express!");
 });
+
+app.use(router);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
