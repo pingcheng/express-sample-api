@@ -1,12 +1,12 @@
 import { Application } from "express";
 import { RoutingControllersOptions } from "routing-controllers/types/RoutingControllersOptions";
-import { HealthController } from "../domains/health/controller";
+import { HealthCheckController } from "../domains/healthcheck/controller";
 import { useExpressServer } from "routing-controllers";
 import { routes as docsRoutes } from "../docs";
 
 // Routing from OpenApi controllers
 export const routingControllersOptions: RoutingControllersOptions = {
-  controllers: [HealthController]
+  controllers: [HealthCheckController]
 };
 
 export const registerRoutes = (app: Application): void => {

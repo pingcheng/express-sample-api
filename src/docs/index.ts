@@ -3,7 +3,7 @@ import { validationMetadatasToSchemas } from "class-validator-jsonschema";
 import { defaultMetadataStorage } from "class-transformer/storage";
 import { getMetadataArgsStorage } from "routing-controllers";
 import { routingControllersToSpec } from "routing-controllers-openapi";
-import { HealthController } from "../domains/health/controller";
+import { HealthCheckController } from "../domains/healthcheck/controller";
 
 const routes: Router = express.Router();
 
@@ -23,7 +23,7 @@ routes.get("/docs/spec", (req, res) => {
   const spec = routingControllersToSpec(
     storage,
     {
-      controllers: [HealthController]
+      controllers: [HealthCheckController]
     },
     {
       components: {

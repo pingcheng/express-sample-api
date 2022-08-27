@@ -1,7 +1,7 @@
 import { IsString } from "class-validator";
 import { JSONSchema } from "class-validator-jsonschema";
 
-export class HealthResponse {
+export class HealthCheckResponse {
   @IsString()
   @JSONSchema({
     description: "The application name",
