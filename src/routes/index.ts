@@ -1,12 +1,15 @@
-import express from "express";
-import HealthController from "../controllers/health/controller";
+import { Application } from "express";
+import { RoutingControllersOptions } from "routing-controllers/types/RoutingControllersOptions";
+import { HealthController } from "../domains/health/controller";
+import { useExpressServer } from "routing-controllers";
+import { routes as docsRoutes } from "../docs";
 
-const router = express.Router();
+// Routing from OpenApi controllers
+export const routingControllersOptions: RoutingControllersOptions = {
+  controllers: [HealthController]
+};
 
-router.get("/health", async (req, res) => {
-  const controller = new HealthController();
-  const response = await controller.getHealth();
-  return res.send(response);
-});
-
-export default router;
+export const registerRoutes = (app: Application): void => {
+  useExpressServer(app, routingControllersOptions);
+  app.use(docsRoutes);
+};
